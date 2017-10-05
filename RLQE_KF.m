@@ -1,13 +1,10 @@
 function [qk, Sigma_qk, qy] = RLQE_KF(Db, Dr, Sigma_Db, ...
                                       omega, Sigma_gyro, ...
-                                      qk_1, Sigma_qk_1, dt, j)
+                                      qk_1, Sigma_qk_1, qy, Sigma_qy, dt, j)
                               
     wx = omega(1);        wy = omega(2);        wz = omega(3);
 
     len = length(Db(1, :));
-    
-    qy = qk_1;
-    Sigma_qy = Sigma_qk_1;
     
     for i = 1 : len
         b = Db(:, i);
